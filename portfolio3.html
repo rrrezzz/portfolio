@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reza Mohamed | Portfolio</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+
+<style>
+/* ---------- COLOR PALETTE ---------- */
+:root {
+    --bg: #F8F5F2;        /* page background */
+    --card: #FFFFFF;      /* card background */
+    --beige: #E6DCD2;     /* soft accent */
+    --tan: #D2B48C;       /* hover accent */
+    --heading: #4B3F37;   /* dark brown headings */
+    --muted: #7C6E65;     /* muted text */
+    --text: #2C2C2C;      /* main text */
+    --shadow: rgba(40,40,40,0.08);
+}
+
+/* ---------- BASE ---------- */
+* { box-sizing: border-box; margin:0; padding:0; }
+html, body { height:100%; }
+body {
+    font-family: "Inter", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height:1.5;
+    scroll-behavior: smooth;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+}
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+a { color:inherit; text-decoration:none; }
+.muted { color: var(--muted); }
+
+/* ---------- NAVBAR ---------- */
+.navbar {
+    position: fixed; width:100%; left:10px ;right:20px;
+    top: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(6px);
+    border-radius: 12px;
+    box-shadow: 0 6px 20px var(--shadow);
+    z-index: 1000;
+}
+.brand { display: flex; align-items: center; gap: 12px; }
+.brand .logo {
+    width: 48px; height:48px; border-radius:10px;
+    background: url('pert pic 1.jpg') center/cover no-repeat;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+.brand h1 { font-family:"Montserrat",sans-serif; font-weight:800; font-size:16px; color:var(--heading); }
+.menu { display:flex; gap:16px; }
+.menu a {
+    padding:6px 10px; font-weight:600; border-radius:8px;
+    transition: all 0.2s ease;
+}
+.menu a:hover { background: var(--beige); color: var(--heading); transform: translateY(-1px); }
+.dbtn {
+    padding:6px 14px; border-radius:10px; background: var(--heading); color:#fff; font-weight:700;
+    box-shadow: 0 6px 18px rgba(75,63,55,0.12);
+}
+.dbtn:hover { background: var(--tan); }
+
+/* ---------- HERO ---------- */
+.hero {
+    display:flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center; min-height: 100vh; padding-top:84px;
+    background-image: linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.02)), url('bg.avif');
+    background-size: cover; background-position: center;
+}
+.hero-content {
+    width: 140px; height:140px; border-radius: 50%;
+    overflow:hidden; border:8px solid var(--card);
+    box-shadow:0 12px 36px rgba(0,0,0,0.12);
+    background: url('port pic 2.jpg') center/cover no-repeat;
+    margin-bottom:18px;
+}
+.hero h2 { font-family:"Montserrat",sans-serif; font-weight:800; font-size:48px; color:var(--heading); margin-bottom:12px; }
+.hero p { font-size:18px; color:var(--muted); margin-bottom:18px; }
+.hero .vbutton a {
+    padding:10px 18px; border-radius:10px; background: var(--heading); color:#fff; font-weight:700;
+    box-shadow: 0 8px 24px rgba(75,63,55,0.12); transition:0.2s;
+}
+.hero .vbutton a:hover { background: var(--tan); }
+.hero .contme {
+    display:inline-block; margin-top:12px; padding:8px 14px; background: var(--card); color: var(--heading);
+    border-radius:10px; font-weight:600; border:3px solid rgba(133, 91, 66, 0.2);
+}
+
+/* -----SECTIONS ----- */
+section { padding: 90px 24px; max-width:1100px; margin:0 auto; }
+section h2 { font-family:"Montserrat",sans-serif; font-size:40px; font-weight:600; color: var(--heading); margin-bottom:24px; }
+section p { color: var(--muted); margin-bottom:20px; }
+
+/* ABOUT */
+#about { background: var(--card); padding:24px; border-radius:12px; box-shadow:0 8px 30px var(--shadow); margin-top:50px;}
+#about .about p { font-size:18px; max-width:640px; line-height:1.8;padding-top:40px;}
+
+/* SKILLS */
+
+
+#skills .progress {
+    background: var(--card); padding: 40px 24px; border-radius:12px; margin-bottom:16px;
+    box-shadow: 0 8px 30px var(--shadow); display:flex; justify-content: space-between; align-items:center;
+    transition: all 0.3s ease-in-out;
+}
+#skills .progress:hover { transform: scale(1.02); box-shadow:0 8px 30px rgba(75,63,55,0.15);background-color: #81705968; }
+
+/* PROJECTS */
+.projects-grid {
+    display:grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap:18px;
+}
+.project { background: var(--card); border-radius:12px; padding:12px; box-shadow:0 8px 30px var(--shadow); transition:all 0.3s ease-in-out; display:flex; flex-direction:column; }
+.project:hover { transform: scale(1.02) translateY(-5px); box-shadow:0 12px 36px rgba(75,63,55,0.12);transition: all 0.3s ease-in-out; }
+.project .screenshot { height:160px; border-radius:10px ; background-size:cover; background-position:center; margin-bottom:12px ;background-color: rgba(236, 236, 211, 0.605)}
+.project .tags { display:flex; gap:8px; flex-wrap:wrap; margin-top:12px; }
+.tag { background: var(--beige); color: var(--heading); font-size:14px; padding:5px 10px; border-radius:999px; }
+
+/* CONTACT */
+#contact form { background: var(--card); padding:18px; border-radius:12px; box-shadow:0 8px 30px var(--shadow); }
+#contact label { display:block; margin-bottom:6px; font-weight:600; }
+#contact input, #contact textarea { width:100%; padding:10px; border-radius:8px; border:1px solid #e6e6e6; margin-bottom:12px; }
+#contact button { background: var(--heading); color:#fff; padding:10px 16px; border-radius:10px; border:0; font-weight:700; cursor:pointer; }
+#contact button:hover { background: var(--tan); }
+#contact .social-links a { display:inline-block; color:var(--heading); margin-bottom:8px; font-weight:600; }
+
+/* FOOTER */
+footer { text-align:center; padding:28px; color:var(--muted); font-size:14px; }
+
+/* RESPONSIVE */
+@media(max-width:980px) {
+    .projects-grid { grid-template-columns: 1fr; }
+    .hero h2 { font-size:36px; }
+}
+@media(max-width:500px){
+    .navbar { flex-direction: column; gap:12px; }
+    .hero-content { width:120px; height:120px; }
+    .hero h2 { font-size:28px; }
+    .about p{ font-size:16px;}
+    .navbar { position: relative;}
+    .progress p{padding-left: 15px;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="brand">
+        <div class="logo"></div>
+        <h1>Reza Mohamed</h1>
+    </div>
+    <div class="menu">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </div>
+    <a class="dbtn" href="/resume.pdf" download>Download Resume</a>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="home">
+    <div class="hero-content"></div>
+    <h2>Reza Mohamed</h2>
+    <p>designer | competitive programmer | problem solver</p>
+    <div class="vbutton"><a href="#projects">View My Work</a></div>
+    <a class="contme" href="mailto:rezamohamed000@gmail.com">Contact Me</a>
+</header>
+
+<!-- ABOUT -->
+<section id="about">
+    <h2>ABOUT ME</h2>
+    <div class="about">
+        <p>Hello — I’m <strong>Reza Mohamed</strong>. I build thoughtful interfaces and solve algorithmic problems. I enjoy working with HTML, CSS and JavaScript, and I focus on clean, accessible design. I’m currently learning advanced frontend topics and practicing competitive programming.</p>
+    </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+    <h2>SKILLS</h2>
+    <div class="progress"><h4>HTML</h4><p class="muted">Semantic, accessible markup for clean, well-structured web pages.</p></div>
+    <div class="progress"><h4>CSS</h4><p class="muted">Responsive layouts, Flexbox, Grid, smooth animations.</p></div>
+    <div class="progress"><h4>JavaScript</h4><p class="muted">Interactive web interfaces, DOM manipulation, and dynamic content.</p></div>
+    <div class="progress"><h4>Problem Solving</h4><p class="muted">Competitive programming, algorithms, and efficient data structures.</p></div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+    <h2>PROJECTS</h2>
+    <p class="muted">A few highlights — click to view the code or live demo.</p>
+    <div class="projects-grid">
+        <article class="project">
+            <div class="screenshot" style="background-image:url('images/project1.png');"></div>
+            <h3>Project One</h3>
+            <p class="muted">jsnafjk jfn ijer jr fei fe rieierh uhgureni fniniwnfiniwf wefhu qbhpwer nfdpuweh nfwu .</p>
+            <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span></div>
+        </article>
+        <article class="project">
+            <div class="screenshot" style="background-image:url('images/project2.png');"></div>
+            <h3>Project Two</h3>
+            <p class="muted">bwhbfiweb hbfbiwenfebf efjlbsdbglth bgerbjg fnkldg rb rh enfie 0feuhw .</p>
+            <div class="tags"><span class="tag">JS</span><span class="tag">Canvas</span></div>
+        </article>
+        <article class="project">
+            <div class="screenshot" style="background-image:url('images/project3.png');"></div>
+            <h3>Project Three</h3>
+            <p class="muted">jsbfabfuuoabo fjbeu aboubao bfouboua ewbfh a fjbfblabr wbf wifuw uwfeh.</p>
+            <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span></div>
+        </article>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="reveal-section">
+    <h2>CONTACT</h2>
+    <div class="container">
+        <form>
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="Your Name" required>
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Your Email" required>
+            <label for="message">Message</label>
+            <textarea id="message" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+        <div class="social-links">
+            <p class="muted">Prefer to email? <a href="mailto:rezamohamed000@gmail.com">rezamohamed000@gmail.com</a></p>
+            <p class="muted">Find Me On:</p>
+            <a href="https://github.com/rrrezz" class="social-icon">GitHub</a>
+            <a href="https://www.linkedin.com/in/reza-mohamed-740a11375/" class="social-icon">LinkedIn</a>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    &copy; 2025 Reza Mohamed. All rights reserved.
+</footer>
+</body>
+</html>
