@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Reza Mohamed — Portfolio</title>
+
+  <!-- FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@600&display=swap" rel="stylesheet">
+
+  <!-- FAVICON: place a favicon.ico or favicon.png into the project root and uncomment the next line -->
+  <!-- <link rel="icon" href="/favicon.ico" /> -->
+
+  <meta name="description" content="Portfolio of Reza Mohamed — Designer, Competitive Programmer & Problem Solver. Projects, skills and contact." />
+
+  <style>
+    /* ---------------------
+       RESET & BASE
+       --------------------- */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      color:#111;
+      background:#f7f7f7;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+    }
+
+    a{color:inherit}
+
+    /* ---------------------
+       NAVBAR
+       --------------------- */
+    .navbar{
+      position:fixed;top:0;left:0;right:0;
+      background:rgba(233,231,190,0.98);
+      backdrop-filter: blur(4px);
+      display:flex;align-items:center;justify-content:space-between;
+      padding:12px 20px;z-index:1200;box-shadow:0 2px 6px rgba(0,0,0,0.06)
+    }
+    .brand{
+      display:flex;gap:12px;align-items:center
+    }
+    .brand .logo{
+      width:44px;height:44px;border-radius:8px;background:url('pert pic 1.jpg') center/cover no-repeat; /* replace with your square logo */
+    }
+    .brand h1{font-family:'Poppins',sans-serif;font-size:18px;margin:0}
+
+    .nav-links{display:flex;gap:18px;align-items:center}
+    .nav-links a{font-weight:600;text-decoration:none;color:#000;padding:6px 8px;border-radius:6px;transition:all .18s}
+    .nav-links a:hover{color:#222;background:rgba(0,0,0,0.06)}
+
+    .cta-btn{background:#111;color:#fff;padding:8px 12px;border-radius:8px;text-decoration:none;font-weight:600}
+    .cta-btn:hover{opacity:.9}
+
+    /* hamburger */
+    .hamburger{display:none;width:42px;height:42px;border-radius:8px;align-items:center;justify-content:center}
+    .hamburger button{background:transparent;border:0;cursor:pointer;padding:0}
+
+    /* ---------------------
+       HERO
+       --------------------- */
+    header.hero{
+      min-height:100vh;padding-top:84px; /* leave room for fixed navbar */
+      display:flex;align-items:center;justify-content:center;flex-direction:column;
+      background-image: linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.02)), url('bg.avif');
+      background-size:cover;background-position:center;text-align:center;
+    }
+    .hero .profile{
+      width:120px;height:120px;border-radius:50%;overflow:hidden;border:6px solid rgba(255,255,255,0.8);box-shadow:0 8px 30px rgba(0,0,0,0.12);margin-bottom:18px;background:#fff;
+    }
+    .hero h2{font-size:44px;font-family:'Poppins',sans-serif;color:#0b0b0b;margin-bottom:6px}
+    .hero p{font-size:18px;color:#111;margin-bottom:18px}
+    .hero .hero-actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+
+    /* ---------------------
+       SECTIONS
+       --------------------- */
+    .container{max-width:1100px;margin:0 auto;padding:40px 20px;}
+    section{padding:64px 0}
+    section h3{font-size:28px;margin-bottom:18px}
+    .muted{color:#444}
+
+    /* ABOUT */
+    .about{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center}
+    .about .bio{font-size:18px}
+    .about .photo{width:180px;height:180px;border-radius:50%;overflow:hidden;margin:auto}
+
+    /* SKILLS */
+    .skills-grid{display:flex;gap:18px;flex-wrap:wrap;align-items:center;justify-content:center}
+    .skill{width:220px;background:#fff;border-radius:12px;padding:14px;box-shadow:0 6px 18px rgba(15,15,15,0.04);transition:transform 1.5s ease ;}
+    .skill:hover{transform: translate(100px) scale(3) ;}
+    .skill h4{margin-bottom:8px}
+    .progress{height:10px;background:#eee;border-radius:999px;overflow:hidden}
+    .progress > i{display:block;height:100%;background:linear-gradient(90deg,#0ea5a4,#06b6d4);border-radius:999px;width:60%}
+    
+
+    /* PROJECTS */
+    .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .container:hover{transform: translate3D(5px);}
+    .card{background:#fff;border-radius:12px;padding:12px;box-shadow:0 8px 30px rgba(2,6,23,0.06);display:flex;flex-direction:column}
+    .card:hover{transform: translateY(-10px)}
+    .card .screenshot{height:160px;background:#ddd;border-radius:8px;background-size:cover;background-position:center;margin-bottom:12px;}
+    .card h4{margin-bottom:8px}
+    .card p{flex:1;color:#444}
+    .card .tags{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap}
+    .tag{font-size:13px;padding:6px 8px;background:rgba(0,0,0,0.05);border-radius:999px}
+    .card .links{margin-top:12px;display:flex;gap:8px}
+    .link-btn{padding:8px 10px;border-radius:8px;background:#111;color:#fff;text-decoration:none;font-size:14px}
+
+    /* CONTACT */
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    form{background:#fff;padding:16px;border-radius:10px;box-shadow:0 8px 30px rgba(0,0,0,0.05)}
+    label{display:block;font-size:14px;margin-bottom:6px}
+    input,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #e6e6e6;margin-bottom:12px}
+    button[type='submit']{background:#0b74ff;color:#fff;padding:10px 14px;border-radius:8px;border:0;cursor:pointer}
+
+    /* FOOTER */
+    footer{padding:20px 0;text-align:center;color:#666}
+
+    /* ---------------------
+       RESPONSIVE
+       --------------------- */
+    @media (max-width:900px){
+      .about{grid-template-columns:1fr}
+      .projects-grid{grid-template-columns:repeat(2,1fr)}
+      .contact-grid{grid-template-columns:1fr}
+    }
+    @media (max-width:640px){
+      .nav-links{display:none}
+      .hamburger{display:flex}
+      .projects-grid{grid-template-columns:1fr}
+      .hero h2{font-size:32px}
+      .hero .profile{width:100px;height:100px}
+      .brand h1{font-size:16px}
+    }
+
+    /* mobile menu open state */
+    .mobile-menu{position:fixed;top:64px;right:16px;left:16px;background:#fff;border-radius:12px;padding:14px;box-shadow:0 20px 50px rgba(0,0,0,0.12);display:none;flex-direction:column;gap:10px}
+    .mobile-menu a{padding:8px;border-radius:8px}
+    .mobile-menu.show{display:flex}
+
+    /* small transitions */
+    a,button{transition:all .18s ease}
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar" aria-label="Main navigation">
+    <div class="brand">
+      <div class="logo" aria-hidden="true"></div>
+      <h1>Reza Mohamed</h1>
+    </div>
+
+    <div class="nav-links" role="navigation" aria-label="Primary">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <div style="display:flex;align-items:center;gap:12px">
+      <a class="cta-btn" href="/resume.pdf" download>Download Resume</a>
+
+      <!-- hamburger for small screens -->
+      <div class="hamburger" aria-hidden="false">
+        <button id="hambtn" aria-expanded="false" aria-controls="mobileMenu" aria-label="Toggle menu">
+          <!-- simple svg hamburger -->
+          <svg width="22" height="16" viewBox="0 0 22 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="22" height="2" rx="1" fill="#111"/>
+            <rect y="7" width="22" height="2" rx="1" fill="#111"/>
+            <rect y="14" width="22" height="2" rx="1" fill="#111"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- mobile menu (hidden on desktop) -->
+    <div id="mobileMenu" class="mobile-menu" role="menu">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+      <a class="cta-btn" href="/resume.pdf" download style="align-self:flex-start">Download Resume</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero" id="home">
+    <div class="profile" aria-hidden="true" style="background-image:url('port pic 2.jpg');background-size:cover;background-position:center"></div>
+    <h2>Reza Mohamed</h2>
+    <p class="muted">Designer · Competitive Programmer · Problem Solver</p>
+
+    <div class="hero-actions">
+      <a class="cta-btn" href="#projects">View My Work</a>
+      <a class="" href="mailto:rezamohamed000@gmail.com">Contact Me</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container about">
+        <div>
+          <h3>About Me</h3>
+          <p class="bio">Hello — I’m <strong>Reza Mohamed</strong>. I build thoughtful interfaces and solve algorithmic problems. I enjoy working with HTML, CSS and JavaScript, and I focus on clean, accessible design. I’m currently learning advanced frontend topics and practicing competitive programming.</p>
+          <p class="muted">Based in India • Open to internships and collaboration</p>
+        </div>
+        <div class="photo" style="background-image:url('');background-size:cover;background-position:center" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" style="background:linear-gradient(180deg,#fff,#fbfbfb)">
+      <div class="container">
+        <h3>Skills</h3>
+        <div class="skills-grid">
+          <div class="skill">
+            <h4>HTML</h4>
+            <div class="progress" aria-hidden="true"><i style="width:95%"></i></div>
+            <p class="muted">Semantic markup, accessibility</p>
+          </div>
+
+          <div class="skill">
+            <h4>CSS</h4>
+            <div class="progress" aria-hidden="true"><i style="width:88%"></i></div>
+            <p class="muted">Responsive layouts, Flexbox, Grid, animations</p>
+          </div>
+
+          <div class="skill">
+            <h4>JavaScript</h4>
+            <div class="progress" aria-hidden="true"><i style="width:80%"></i></div>
+            <p class="muted">DOM, ES6+, basic tooling</p>
+          </div>
+
+          <div class="skill">
+            <h4>Problem Solving</h4>
+            <div class="progress" aria-hidden="true"><i style="width:92%"></i></div>
+            <p class="muted">Competitive programming practice</p>
+          </div>
+
+          <div class="skill">
+            <h4>Design</h4>
+            <div class="progress" aria-hidden="true"><i style="width:70%"></i></div>
+            <p class="muted">Visual systems & UI basics</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="container">
+        <h3>Projects</h3>
+        <p class="muted">A few highlights — click to view the code or live demo.</p><br>
+
+        <div class="projects-grid" aria-live="polite">
+          <!-- Repeat / replace these cards with your project details and images -->
+          <article class="card">
+            <div class="screenshot" style="background-image:url('images/project1.png');"></div>
+            <h4>Project One</h4>
+            <p>Single-page app showing a small creative portfolio with animations and responsive layout.</p>
+            <div class="tags">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">JS</span>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="#" target="_blank" rel="noopener">Live</a>
+              <a class="link-btn" href="#" target="_blank" rel="noopener">Code</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="screenshot" style="background-image:url('images/project2.png');"></div>
+            <h4>Project Two</h4>
+            <p>Algorithm visualizer for sorting algorithms — interactive and educational.</p>
+            <div class="tags">
+              <span class="tag">JS</span>
+              <span class="tag">Canvas</span>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="#" target="_blank" rel="noopener">Live</a>
+              <a class="link-btn" href="#" target="_blank" rel="noopener">Code</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="screenshot" style="background-image:url('images/project3.png');"></div>
+            <h4>Project Three</h4>
+            <p>A small CRUD app that demonstrates working with localStorage and simple state management.</p>
+            <div class="tags">
+              <span class="tag">HTML</span>
+              <span class="tag">JS</span>
+            </div>
+            <div class="links">
+              <a class="link-btn" href="#" target="_blank" rel="noopener">Live</a>
+              <a class="link-btn" href="#" target="_blank" rel="noopener">Code</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" style="background:linear-gradient(180deg,#fbfbfb,#fff)">
+      <div class="container">
+        <h3>Contact</h3>
+        <div class="contact-grid">
+          <form id="contactForm" onsubmit="return handleSubmit(event)">
+            <label for="name">Name</label>
+            <input id="name" name="name" required placeholder="Your name">
+
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required placeholder="you@example.com">
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="6" required placeholder="Say hello"></textarea>
+
+            <button type="submit">Send Message</button>
+            <p id="formStatus" class="muted" style="margin-top:8px;font-size:14px"></p>
+          </form>
+
+          <div style="display:flex;flex-direction:column;gap:12px;justify-content:center;align-items:flex-start">
+            <p class="muted">Prefer to email? <a href="mailto:rezamohamed000@gmail.com">rezamohamed000@gmail.com</a></p>
+            <p class="muted">Find me on:</p>
+            <div style="display:flex;gap:10px;align-items:center">
+              <a href="https://github.com/rrrezzz" aria-label="GitHub profile">GitHub</a>
+              <a href="https://www.linkedin.com/in/reza-mohamed-740a11375/" aria-label="LinkedIn profile">LinkedIn</a>
+            </div>
+
+            <div style="margin-top:6px;color:#666;font-size:14px">Tip: replace placeholder links above with your real profiles.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <small>&copy; 2025 Reza Mohamed • Built with ❤️ • <a href="#">Back to top</a></small>
+    </div>
+  </footer>
+
+  <script>
+    // MOBILE MENU
+    const hambtn = document.getElementById('hambtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hambtn.addEventListener('click', ()=>{
+      const open = mobileMenu.classList.toggle('show');
+      hambtn.setAttribute('aria-expanded', String(open));
+    });
+
+    // SMOOTH SCROLL FOR ANCHORS
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const href = a.getAttribute('href');
+        if(href.startsWith('#')){
+          const target = document.querySelector(href);
+          if(target){
+            e.preventDefault();
+            // close mobile menu on navigation
+            mobileMenu.classList.remove('show');
+            hambtn.setAttribute('aria-expanded','false');
+            const top = target.getBoundingClientRect().top + window.scrollY - 70; // nav height
+            window.scrollTo({top,behavior:'smooth'});
+          }
+        }
+      })
+    })
+
+    // CONTACT FORM (no backend) - demo only
+    function handleSubmit(e){
+      e.preventDefault();
+      const status = document.getElementById('formStatus');
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      if(!name||!email||!message){
+        status.textContent = 'Please fill all fields.';return false;
+      }
+      // show demo behaviour: clear fields and show a friendly message
+      status.textContent = 'Thanks, message saved (demo). For a real form, connect this to a backend or use Formspree/Netlify forms.';
+      e.target.reset();
+      return false;
+    }
+  </script>
+</body>
+</html>
